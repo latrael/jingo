@@ -14,3 +14,26 @@ fi
 
 # List of all the functions that are going to be run:
 #RootPasswdChange
+
+startFunctions() {
+	clear
+
+	RootPasswdChange
+	printf "\033[1;31mDone!\033[0m\n"
+}
+
+cont(){
+	printf "\033[1;31mI have finished this task. Continue to next Task? (Y/N)\033[0m\n"
+	read contyn
+	if [ "$contyn" = "N" ] || [ "$contyn" = "n" ]; then
+		printf "\033[1;31mAborted\033[0m\n"
+		exit
+	fi
+	clear
+
+RootPasswdChange() {
+printf ""
+# Changes root's password
+
+
+}
