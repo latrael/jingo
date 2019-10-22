@@ -1,4 +1,5 @@
 #!/bin/bash
+#MIT Fake License
 unalias -a #Get rid of aliases
 echo "unalias -a" >> ~/.bashrc
 echo "unalias -a" >> /root/.bashrc
@@ -22,7 +23,7 @@ startFunctions() {
 	printf "\033[1;31mDone!\033[0m\n"
 }
 
-cont(){
+cont() {
 	printf "\033[1;31mI have finished this task. Continue to next Task? (Y/N)\033[0m\n"
 	read contyn
 	if [ "$contyn" = "N" ] || [ "$contyn" = "n" ]; then
@@ -30,10 +31,13 @@ cont(){
 		exit
 	fi
 	clear
-
-RootPasswdChange() {
-printf ""
-# Changes root's password
-
-
 }
+RootPasswdChange() {
+printf "Changing root's passwd"
+# disables root's password
+passwd
+
+cont
+}
+
+startFunctions
