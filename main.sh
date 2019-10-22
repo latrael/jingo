@@ -34,6 +34,7 @@ cont(){
 
 syncookie(){
 	sysctl -n net.ipv4.tcp_syncookies
+	printf "Enabled syncookie protection! \n \n"
 	cont
 }
 
