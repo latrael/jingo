@@ -16,8 +16,8 @@ fi
 startFunctions() {
 	clear
 
-	RootPasswdChange
 	syncookie
+	RootPasswdChange
 
 	printf "\033[1;31mDone!\033[0m\n"
 }
