@@ -1,4 +1,7 @@
 #!/bin/bash
+# Made by Quimea
+# Check out my github for more
+
 
 unalias -a #Get rid of aliases
 echo "unalias -a" >> ~/.bashrc
