@@ -1,7 +1,4 @@
 #!/bin/bash
-# Made by Quimea
-# Check out my github for more
-
 
 unalias -a #Get rid of aliases
 echo "unalias -a" >> ~/.bashrc
@@ -17,6 +14,7 @@ if [ "$EUID" -ne 0 ] ;
 fi
 
 # List of all the functions that are going to be run:
+# disableipforwarding
 # syncookie
 # disableipv6
 # disableguest
@@ -25,6 +23,7 @@ fi
 startFunctions() {
 	clear
 
+	disableipforwarding
 	syncookie
 	disableipv6
 	disableguest
@@ -41,6 +40,13 @@ cont(){
 		exit
 	fi
 	clear
+}
+
+disableipforwarding(){
+	printf "\n Diabling IP Forwarding \n"
+	echo 0 > /proc/sys/net/ipv4/ip_forward
+	printf "\n Successful!"
+	cont
 }
 
 syncookie(){
@@ -69,20 +75,7 @@ passwd
 cont
 }
 
-# cronroot(){
-#	printf "\n Only allowing cron with root access \n"
-#	
-	#--------- Allow Only Root Cron ----------------
-	#reset crontab
-#	crontab -r
-#	cd /etc/
-#	/bin/rm -f cron.deny at.deny
-#	echo root >cron.allow
-#	echo root >at.allow
-#	/bin/chown root:root cron.allow at.allow
-#	/bin/chmod 644 cron.allow at.allow
-#	cont
-#}
+
 
 
 startFunctions
