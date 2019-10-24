@@ -14,15 +14,18 @@ if [ "$EUID" -ne 0 ] ;
 fi
 
 # List of all the functions that are going to be run:
+# disableipspoofing
 # disableipforwarding
 # syncookie
 # disableipv6
 # disableguest
+# sysCtlsecure
 # RootPasswdChange
 
 startFunctions() {
 	clear
 
+	disableipspoofing
 	disableipforwarding
 	syncookie
 	disableipv6
@@ -42,6 +45,13 @@ cont(){
 	clear
 }
 
+disableipspoofing(){
+	printf "\n Disabling IP Spoofing!"
+	echo "nospoof on" >> /etc/host.conf
+	printf "Successful!"
+	cont
+}
+
 disableipforwarding(){
 	printf "\n Diabling IP Forwarding \n"
 	echo 0 > /proc/sys/net/ipv4/ip_forward
@@ -50,9 +60,9 @@ disableipforwarding(){
 }
 
 syncookie(){
-	sysctl -n net.ipv4.tcp_syncookies
-	printf "\n \n Enabled syncookie protection! \n \n"
+	printf "\n \n Press Y to edit syncookie \n \n"
 	cont
+	gedit /etc/sysctl.d/10-network-security.conf
 }
 
 disableipv6(){
@@ -68,10 +78,27 @@ disableguest(){
 	cont
 }
 
+sysCtlsecure(){
+	printf "\n Making SysCtl secure \n"
+		#--------- Secure /etc/sysctl.conf ----------------
+		sysctl -w net.ipv4.tcp_syncookies=1
+		sysctl -w net.ipv4.ip_forward=0
+		sysctl -w net.ipv4.conf.all.send_redirects=0
+		sysctl -w net.ipv4.conf.default.send_redirects=0
+		sysctl -w net.ipv4.conf.all.accept_redirects=0
+		sysctl -w net.ipv4.conf.default.accept_redirects=0
+		sysctl -w net.ipv4.conf.all.secure_redirects=0
+		sysctl -w net.ipv4.conf.default.secure_redirects=0
+		sysctl -p
+		printf "Successful!"
+		cont
+	}
+}
+
 RootPasswdChange() {
-printf "Changing root's passwd \n \n"
-# changes root's password
-passwd
+printf "\n Changing root's passwd \n \n"
+# disables root's passwd
+passwd -l root
 cont
 }
 
