@@ -14,6 +14,7 @@ if [ "$EUID" -ne 0 ] ;
 fi
 
 # List of all the functions that are going to be run:
+# firewall
 # disableipspoofing
 # disableipforwarding
 # syncookie
@@ -33,6 +34,13 @@ startFunctions() {
 	RootPasswdChange
 
 	printf "\033[1;31mDone!\033[0m\n"
+}
+
+firewall(){
+	printf "\n Put y to install firewall: \n"
+	cont
+	apt-get intall ufw
+	sleep(15)
 }
 
 cont(){
