@@ -93,7 +93,6 @@ sysCtlsecure(){
 		sysctl -p
 		printf "Successful!"
 		cont
-	}
 }
 
 RootPasswdChange() {
