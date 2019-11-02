@@ -15,6 +15,7 @@ fi
 
 # List of all the functions that are going to be run:
 
+# disaleprinters
 # disableipspoofing
 # disableipforwarding
 # syncookie
@@ -31,6 +32,7 @@ startFunctions() {
 	syncookie
 	disableipv6
 	disableguest
+	disableprinters
 	RootPasswdChange
 
 	printf "\033[1;31mDone!\033[0m\n"
@@ -44,6 +46,14 @@ cont(){
 		exit
 	fi
 	clear
+}
+
+disableprinters(){
+	systemctl stop cups-browsed
+	sleep 5
+	systemctl disable cups-browsed
+	printf "\n Disabled automic printer installation! \n"
+	cont
 }
 
 disableipspoofing(){
