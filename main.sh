@@ -106,7 +106,7 @@ sysCtlsecure(){
 }
 
 RootPasswdChange() {
-printf "\n Changing root's passwd \n \n"
+printf "\n Disabling root's passwd \n \n"
 # disables root's passwd
 passwd -l root
 cont
