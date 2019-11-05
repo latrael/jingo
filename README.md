@@ -32,3 +32,12 @@ order bind,hosts
 nospoof on
 ```
 
+## Fail2Ban and DenyHosts
+
+DenyHosts is a python program that automatically blocks SSH attacks by adding entries to /etc/hosts.deny. DenyHosts will also inform Linux administrators about offending hosts, attacked users and suspicious logins.
+
+After running ``` apt-get update```, run the following:
+
+``` shell
+sudo apt-get install denyhosts
+```
