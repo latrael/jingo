@@ -5,7 +5,9 @@ Cyberpatriot scripts for Ubuntu/Debian to run through the easier and more redund
 
 # Secure shared memory
    
-Shared memory can be used in an attack against a running service. Modify /etc/fstab to make it more secure. Open a Terminal Window and enter the following:
+Shared memory can be used in an attack against a running service. Modify /etc/fstab to make it more secure. 
+
+Open a Terminal Window and enter the following:
 ``` shell
 sudo vi /etc/fstab
 ```
