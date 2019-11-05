@@ -3,7 +3,7 @@ Cyberpatriot scripts for Ubuntu/Debian to run through the easier and more redund
 
 ## A checklist of some sort is below:
 
-# Secure shared memory
+### Secure shared memory
    
 Shared memory can be used in an attack against a running service. Modify /etc/fstab to make it more secure. 
 
