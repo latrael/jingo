@@ -16,3 +16,19 @@ Make sure to add the following line to the end of the document:
 ```
 tmpfs     /run/shm     tmpfs     defaults,noexec,nosuid     0     0
 ```
+
+## Prevent IP Spoofing(technique #348454573457389457934)
+
+Open a terminal and type the following:
+
+``` shell
+sudo vi /etc/host.conf
+```
+
+Edit the document to get the following:
+
+```
+order bind,hosts
+nospoof on
+```
+
