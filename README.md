@@ -32,7 +32,7 @@ order bind,hosts
 nospoof on
 ```
 
-## Fail2Ban and DenyHosts
+## DenyHosts
 
 DenyHosts is a python program that automatically blocks SSH attacks by adding entries to /etc/hosts.deny. DenyHosts will also inform Linux administrators about offending hosts, attacked users and suspicious logins.
 
@@ -41,3 +41,26 @@ After running ``` apt-get update```, run the following:
 ``` shell
 sudo apt-get install denyhosts
 ```
+
+After installation edit the configuration file /etc/denyhosts.conf  and change the email, and other settings as required.
+
+To edit the admin email settings open a terminal window and enter:
+``` shell
+sudo vi /etc/denyhosts.conf
+```
+
+Edit to what you need to edit it too:
+
+```
+ADMIN_EMAIL = root@localhost
+SMTP_HOST = localhost
+SMTP_PORT = 25
+#SMTP_USERNAME=foo
+#SMTP_PASSWORD=bar
+SMTP_FROM = DenyHosts nobody@localhost
+#SYSLOG_REPORT=YES 
+```
+
+Fail2ban is more advanced than DenyHosts as it extends the log monitoring to other services including SSH, Apache, Courier, FTP, and more.
+Fail2ban scans log files and bans IPs that show the malicious signs -- too many password failures, seeking for exploits, etc. Generally Fail2Ban then used to update firewall rules to reject the IP addresses for a specified amount of time, although any arbitrary other action could also be configured.
+Out of the box Fail2Ban comes with filters for various services (apache, courier, ftp, ssh, etc).
