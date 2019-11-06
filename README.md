@@ -89,3 +89,8 @@ logpath  = /var/log/auth.log
 maxretry = 3
 ```
 For SSH, if you already changed the default port in the sshd.config file, then you need to specify that port where it says ```port   = ```.
+When you finish configuring Fail2Ban to your liking, make sure to restart the service:
+``` shell
+sudo service fail2ban restart
+```
+You can also check the status with: ```sudo fail2ban-client status```
