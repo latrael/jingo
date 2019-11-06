@@ -88,3 +88,4 @@ filter   = sshd
 logpath  = /var/log/auth.log
 maxretry = 3
 ```
+For SSH, if you already changed the default port in the sshd.config file, then you need to specify that port where it says ```port   = ```.
