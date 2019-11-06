@@ -9,7 +9,7 @@ Shared memory can be used in an attack against a running service. Modify /etc/fs
 
 Open a Terminal Window and enter the following:
 ``` shell
-sudo vi /etc/fstab
+sudo gedit /etc/fstab
 ```
 
 Make sure to add the following line to the end of the document:
@@ -22,7 +22,7 @@ tmpfs     /run/shm     tmpfs     defaults,noexec,nosuid     0     0
 Open a terminal and type the following:
 
 ``` shell
-sudo vi /etc/host.conf
+sudo gedit /etc/host.conf
 ```
 
 Edit the document to get the following:
@@ -46,7 +46,7 @@ After installation edit the configuration file /etc/denyhosts.conf  and change t
 
 To edit the admin email settings open a terminal window and enter:
 ``` shell
-sudo vi /etc/denyhosts.conf
+sudo gedit /etc/denyhosts.conf
 ```
 
 Edit to what you need to edit it to:
@@ -69,4 +69,22 @@ To install Fail2Ban, make sure that you ran ```sudo apt-get update``` first, the
 ``` shell
 sudo apt-get install fail2ban
 ```
+After installation edit the configuration file /etc/fail2ban/jail.local  and create the filter rules as required.
+
+To edit the settings open a terminal window and enter:
+``` shell
+sudo gedit /etc/fail2ban/jail.conf
+```
+
+Activate all the services you would like fail2ban to monitor by changing enabled = false to enabled = true
+
+For example if you would like to enable the SSH monitoring and banning jail, find the line below and change enabled from false to true. Thats it.
+```
+[sshd]
+
+enabled  = true
+port     = ssh
+filter   = sshd
+logpath  = /var/log/auth.log
+maxretry = 3
 ```
