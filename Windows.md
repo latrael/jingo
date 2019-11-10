@@ -25,3 +25,13 @@
 ## Processes
 A useful website to use whether processes are legitimate or not is named [processlibrary.com](https://processlibrary.com)
 
+## Windows Features
+
+Make sure that you check the Readme first before tampering with any of the Windows Features. The main things to look for in the Windows Featues are:
+- **Internet Explorer**(sadly)
+- IIS(make sure Readme doesn't need FTP or Apache)
+- SMB/CIFS File Sharing Support
+- Telnet Client
+
+Once again, make sure to check the Readme so you do not lose points.
+
