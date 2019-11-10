@@ -93,3 +93,17 @@ When you finish configuring Fail2Ban to your liking, make sure to restart the se
 sudo service fail2ban restart
 ```
 You can also check the status with: ```sudo fail2ban-client status```
+
+## Windows list of things to cover:
+### Services
+- IIS
+- NetMeeting Remote Desktop Sharing VoIP
+- Remote Desktop Help Session Manager
+- Remote Registry
+- Routing and Remote Access
+- SimpleFileSharing
+- SSD Discovery Service
+- Telnet
+- FTP
+- Universal Plug and Play Device Host
+- Windows Messenger Service
