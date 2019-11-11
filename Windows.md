@@ -46,6 +46,9 @@
 #       127.0.0.1       localhost
 #       ::1             localhost 
  ```
+ 
+ ### Checking for executables
+ You can use netstat to look for executables that are listening on ports, and also possibly connected. To check for executables, run ```netstat -anb```.
 ## Processes
 A useful website to use whether processes are legitimate or not is named [processlibrary.com](https://processlibrary.com)
 
