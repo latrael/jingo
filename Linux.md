@@ -91,3 +91,5 @@ When you finish configuring Fail2Ban to your liking, make sure to restart the se
 sudo service fail2ban restart
 ```
 You can also check the status with: ```sudo fail2ban-client status```
+## Users
+There are certain files that you look through to aid in checking for accounts and groups that do not belong, or may have root access. By typing ```cat /etc/passwd``` to check 
