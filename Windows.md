@@ -1,5 +1,6 @@
 ## Windows list of things to cover:
 ### Services
+Type ```services.msc``` in the Windows search, and disable the list below:
 - IIS
 - NetMeeting Remote Desktop Sharing VoIP
 - Remote Desktop Help Session Manager
