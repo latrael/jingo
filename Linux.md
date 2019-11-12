@@ -98,4 +98,4 @@ You can also check the status with: ```sudo fail2ban-client status```
 - This is mainly used to see the IP Address and the ports that are being used on the computer. There is almost always a red flag if you see connections that are established if they are other then 127.0.0.1(localhost). This may hint at a backdoor in your system.
 
 ## Users
-There are certain files that you look through to aid in checking for accounts and groups that do not belong, or may have root access. By typing ```cat /etc/passwd``` to check 
+There are certain files that you look through to aid in checking for accounts and groups that do not belong, or may have root access. By typing ```cat /etc/passwd```, you can see all of the users with their encrypted password, as well as their UID. Make sure that there isn't a user with the UID of 0, as that user is root.
