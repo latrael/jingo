@@ -15,6 +15,7 @@ fi
 
 # List of all the functions that are going to be run:
 
+# vsftp
 # disaleprinters
 # disableipspoofing
 # disableipforwarding
@@ -26,7 +27,7 @@ fi
 
 startFunctions() {
 	clear
-
+	vsftp
 	disableipspoofing
 	disableipforwarding
 	syncookie
@@ -105,6 +106,23 @@ sysCtlsecure(){
 		cont
 }
 
+vsftp() {
+echo -n "VSFTP [Y/n] "
+read option
+if [[ $option =~ ^[Yy]$ ]]
+then
+  sudo apt-get -y install vsftpd
+  # Disable anonymous uploads
+  sudo sed -i '/^anon_upload_enable/ c\anon_upload_enable no' /etc/vsftpd.conf
+  sudo sed -i '/^anonymous_enable/ c\anonymous_enable=NO' /etc/vsftpd.conf
+  # FTP user directories use chroot
+  sudo sed -i '/^chroot_local_user/ c\chroot_local_user=YES' /etc/vsftpd.conf
+  sudo service vsftpd restart
+else
+  sudo apt-get -y purge vsftpd*
+fi
+
+}
 RootPasswdChange() {
 printf "\n Disabling root's passwd \n \n"
 # disables root's passwd
