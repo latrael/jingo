@@ -99,3 +99,16 @@ You can also check the status with: ```sudo fail2ban-client status```
 
 ## Users
 There are certain files that you look through to aid in checking for accounts and groups that do not belong, or may have root access. By typing ```cat /etc/passwd```, you can see all of the users with their encrypted password, as well as their UID. Make sure that there isn't a user with the UID of 0, as that user is root.
+
+## Services
+You can use ```bum```(Boot-up Manager) to view services and enable/disable them. You can install BUM by typing in to the terminal ```sudo apt-get install bum in```. Once you have BUM installed, you can type ```bum``` to run the program. 
+
+If you do have xinetd installed, you can view the file located at ```/etc/xinetd.d```. To disable a service this way, you can add ```disable = yes``` to the end of whatever service you want to delete.
+
+A list of services to generally disable, **keeping the README in mind** is:
+- Telnet
+- Anonymous FTP
+- remote processes(Rexec.Rlogin,Rsh)
+- Rstatd
+- Finger
+- Talk,Ntalk
