@@ -115,3 +115,7 @@ A list of services to generally disable, **keeping the README in mind** is:
 
 ### Processes
 You can check running processes by running ```ps -ef``` in the terminal.
+## Auditing
+Auditing isn't automatically "downloaded" or "set-up" like it is in Windows, so you have to install ```auditd``` to set it up. To install it, open the trusty terminal up and type ```sudo apt-get install auditd```.
+
+To enable audits, in the terminal, type ```auditd -e 1```. You can view and modify policies by viewing the config file, which is located at ```/etc/auditd/auditd.conf```. 
