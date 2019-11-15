@@ -7,7 +7,7 @@ Pluggable Authentication Modules(PAM) are used for logon and applications.
 
 Make sure you have cracklib installed by running ```sudo apt-get install libpam-cracklib```.
 
-To edit the PAM configuration file, go to the terminal and type ```gedit /etc/pam.d/common‐password```. To enforce a password history, look for the line that has ```pam_unix.so``` and at the end of that line, type ```remember=5```.
+To edit the PAM configuration file, go to the terminal and type ```gedit /etc/pam.d/common‐password```. To enforce a password history, look for the line that has ```pam_unix.so``` and at the end of that line, type ```remember=5```. On that same line, add ```minlen=10``` to configure the minimum length.
 
 To add password requirements, find the line that has ```pam_cracklib.so```(thats why you made sure cracklib was installed), and add the following to the end of that line. 
 
