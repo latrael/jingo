@@ -1,5 +1,32 @@
 ## A linux checklist of some sort is below:
 
+## PAM Modules, Passwords
+Pluggable Authentication Modules(PAM) are used for logon and applications.
+
+### MAKE SURE YOU ARE CAREFUL EDITING THIS FILE, MAKE A LOG OF EVERYTHING THAT YOU HAVE DONE BEFORE IN CASE YOU LOCK YOURSELF OUT. You have been warned.
+
+Make sure you have cracklib installed by running ```sudo apt-get install libpam-cracklib```.
+
+To edit the PAM configuration file, go to the terminal and type ```gedit /etc/pam.d/common‐password```. To enforce a password history, look for the line that has ```pam_unix.so``` and at the end of that line, type ```remember=5```.
+
+To add password requirements, find the line that has ```pam_cracklib.so```(thats why you made sure cracklib was installed), and add the following to the end of that line. 
+
+```ucredit=‐1 lcredit=‐1 dcredit=‐1 ocredit=‐1```
+
+A key for the above is below:
+
+```ucredit```:
+- upper case
+
+```lcredit```:
+- lower case
+
+```dcredit```:
+- number
+
+```ocredit```:
+  - symbol
+
 ### Secure shared memory
    
 Shared memory can be used in an attack against a running service. Modify /etc/fstab to make it more secure. 
