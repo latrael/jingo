@@ -15,3 +15,5 @@ https://www.youtube.com/watch?v=2IosbILbMWQ
 https://www.thefanclub.co.za/how-to/how-secure-ubuntu-1604-lts-server-part-1-basics
 
 https://manpages.ubuntu.com/manpages/xenial/man5/passwd.5.html
+
+https://unix.stackexchange.com/questions/412446/how-to-disable-ping-response-icmp-echo-in-linux-all-the-time
