@@ -151,3 +151,5 @@ To enable audits, in the terminal, type ```auditd -e 1```. You can view and modi
 ## Rootkits
 Rootkits are somewhat less common, at least in Cyberpatriots, but I might as well show you how to check for it.
 Start by installing a rootkit checker, by typing ```sudo apt-get install rkhunter``` into the terminal. Then, once it is installed, to check for rootkits, type ```sudo rkhunter --check --enable apps```. 
+## Media Files and Other
+Usually in an image there are certain media files, as well as other prohibited files that need to be deleted off of the machine. You can use the "find" command in the terminal to find files based on their extension, who owns the file, and other parameters that you can find out by using ```man find```.
