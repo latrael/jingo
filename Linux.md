@@ -139,6 +139,8 @@ A list of services to generally disable, **keeping the README in mind** is:
 - Rstatd
 - Finger
 - Talk,Ntalk
+- rsh
+- rlogin
 
 ### Processes
 You can check running processes by running ```ps -ef``` in the terminal.
