@@ -153,3 +153,14 @@ Rootkits are somewhat less common, at least in Cyberpatriots, but I might as wel
 Start by installing a rootkit checker, by typing ```sudo apt-get install rkhunter``` into the terminal. Then, once it is installed, to check for rootkits, type ```sudo rkhunter --check --enable apps```. 
 ## Media Files and Other
 Usually in an image there are certain media files, as well as other prohibited files that need to be deleted off of the machine. You can use the "find" command in the terminal to find files based on their extension, who owns the file, and other parameters that you can find out by using ```man find```.
+
+## iptables
+You can use iptables, a powerful program, in order to block common network attacks, by setting network settings. Make sure that iptables is installed by running ```sudo apt-get install iptables```. You can type ```man iptables```.
+
+To force SYN packets check, then run: ```iptables -A INPUT -p tcp ! --syn -m state --state NEW -j DROP```.
+
+To drop XMAS packets, then run: ```iptables -A INPUT -p tcp --tcp-flags ALL ALL -j DROP```.
+
+To drop null packets, then run: ```iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP```.
+
+Drop incoming packets with fragments: ```iptables -A INPUT -f -j DROP```.
