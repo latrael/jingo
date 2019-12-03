@@ -148,6 +148,11 @@ You can check running processes by running ```ps -ef``` in the terminal.
 Auditing isn't automatically "downloaded" or "set-up" like it is in Windows, so you have to install ```auditd``` to set it up. To install it, open the trusty terminal up and type ```sudo apt-get install auditd```.
 
 To enable audits, in the terminal, type ```auditd -e 1```. You can view and modify policies by viewing the config file, which is located at ```/etc/auditd/auditd.conf```. 
+
+If you want to set ```auditd``` to check certain files for changes, like the passwd file, then type:
+
+```auditctl -w /etc/passwd -p war -k password-file```.
+
 ## Rootkits
 Rootkits are somewhat less common, at least in Cyberpatriots, but I might as well show you how to check for it.
 Start by installing a rootkit checker, by typing ```sudo apt-get install rkhunter``` into the terminal. Then, once it is installed, to check for rootkits, type ```sudo rkhunter --check --enable apps```. 
@@ -164,3 +169,6 @@ To drop XMAS packets, then run: ```iptables -A INPUT -p tcp --tcp-flags ALL ALL 
 To drop null packets, then run: ```iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP```.
 
 Drop incoming packets with fragments: ```iptables -A INPUT -f -j DROP```.
+
+## in depth with SSH
+SSH, if enabled on the machine, needs to be secured. First make sure that ssh is installed. If SSH isn't installed,
