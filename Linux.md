@@ -118,6 +118,22 @@ When you finish configuring Fail2Ban to your liking, make sure to restart the se
 sudo service fail2ban restart
 ```
 You can also check the status with: ```sudo fail2ban-client status```
+
+### securing with Fail2Ban
+First make sure that the service has started by running: ```systemctl start fail2ban && systemctl enable fail2ban```.
+Go in and edit the config file: ```sudo gedit /etc/fail2ban/jail.local```.
+
+Below is an excerpt from the document, make sure that it matches.
+
+```
+# "bantime" is the number of seconds that a host is banned.
+bantime  = 900
+
+# A host is banned if it has generated "maxretry" during the last "findtime"
+# seconds.
+findtime = 600
+maxretry = 5
+```
 ## Networking in general
 ```netstat``` is a very useful command to find out what is running on your network, and see what ports are possibly being used. There are some useful commands below that go in greater detail about netstat.
 
