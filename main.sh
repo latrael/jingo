@@ -15,6 +15,8 @@ fi
 
 # List of all the functions that are going to be run:
 
+# telnet
+# ssh
 # vsftp
 # disaleprinters
 # disableipspoofing
@@ -34,6 +36,8 @@ startFunctions() {
 	disableipv6
 	disableguest
 	disableprinters
+	ssh
+	telnet
 	RootPasswdChange
 
 	printf "\033[1;31mDone!\033[0m\n"
@@ -120,9 +124,32 @@ then
   sudo service vsftpd restart
 else
   sudo apt-get -y purge vsftpd*
+  sudo apt-get autoremove
 fi
 
+ssh() {
+echo -n "SSHD [Y/n] "
+read option
+if [[ $option =~ ^[Yy}$ ]]
+then
+  sudo apt-get -y ssh
+  printf "\n setting SSH port to 255 \n"
+  # sets port to 255
+  sudo sed -i '/^Port/ c\Port 255' /etc/ssh/sshd_config
+  sudo sed -i '/^PermitRootLogin/ c\PermitRootLogin no' /etc/ssh/sshd_config
+  sudo sed -i '/^PermitEmptyPasswords/ c\PermitEmptyPasswords no' /etc/ssh/sshd_config
+  sudo sed -i '/^IgnoreRhosts/ c\IgnoreRhosts yes' /etc/ssh/sshd_config
+  sudo sed -i '/^HostbasedAuthentication/ c\HostbasedAuthentication no' /etc/ssh/sshd_config
+  sudo sed -i '/^X11Forwarding/ c\X11Forwarding no' /etc/ssh/sshd_config
+ else
+ sudo apt-get -y purge ssh
+ sudo apt-get autoremove
 }
+
+telnet() {
+  sudo apt-get remove telnet
+}
+
 RootPasswdChange() {
 printf "\n Disabling root's passwd \n \n"
 # disables root's passwd
