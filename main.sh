@@ -28,7 +28,6 @@ fi
 # RootPasswdChange
 
 startFunctions() {
-	clear
 	vsftp
 	disableipspoofing
 	disableipforwarding
