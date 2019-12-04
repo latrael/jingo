@@ -125,6 +125,7 @@ else
   sudo apt-get -y purge vsftpd*
   sudo apt-get autoremove
 fi
+}
 
 ssh() {
 echo -n "SSHD [Y/n] "
@@ -143,10 +144,21 @@ then
  else
  sudo apt-get -y purge ssh
  sudo apt-get autoremove
+fi
 }
 
 telnet() {
   sudo apt-get remove telnet
+}
+
+apache() {
+echo -n "apache [Y/n] "
+read option
+if [[ $option =~ ^[Yy}$ ]]
+then
+  sudo apt-get install -y apache2
+else
+fi
 }
 
 RootPasswdChange() {
