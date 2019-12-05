@@ -143,12 +143,12 @@ then
   sudo sed -i '/^X11Forwarding/ c\X11Forwarding no' /etc/ssh/sshd_config
  else
  sudo apt-get -y purge ssh
- sudo apt-get autoremove
+ sudo apt-get -y autoremove
 fi
 }
 
 telnet() {
-  sudo apt-get remove telnet
+  sudo apt-get -y remove telnet
 }
 
 apache() {
@@ -157,7 +157,12 @@ read option
 if [[ $option =~ ^[Yy}$ ]]
 then
   sudo apt-get install -y apache2
+  sudo sed -i '/^ServerTokens/ c\ServerTokens Prod' /etc/apache2/conf-enabled/security.conf
+  sudo sed -i '/^ServerSignature/ c\ServerSignature Off' /etc/apache2/conf-enabled/security.conf
+  sudo sed -i '/^TraceEnable/ c\TraceEnable off' /etc/apache2/conf-enabled/security.conf
 else
+  sudo apt-get -y remove apache2
+  sudo apt-get -y autoremove
 fi
 }
 
