@@ -2,6 +2,4 @@
 
 ## L'équipe de Bêta, Lycee de Vue Gamme
 
-
-This repo is mainly for storage purposes while things get transfered over to docs. You will find a linux script, as well as hardening guides for both Linux and Windows. They are being updated currently.
-
+Ceci est principalement pour le stockage pendant que je les déplace vers des documents. Ils ont des scripts pour Linux et des listes de contrôle.
