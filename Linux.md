@@ -1,5 +1,7 @@
 ## A linux checklist of some sort is below:
 
+openssl req -new -x509 -days 365 -nodes -out /etc/proftpd/ssl/proftpd.cert.pem -keyout /etc/proftpd/ssl/proftpd.key.pem
+
 ## PAM Modules, Passwords
 Pluggable Authentication Modules(PAM) are used for logon and applications.
 
