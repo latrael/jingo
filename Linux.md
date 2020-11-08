@@ -206,9 +206,7 @@ This generates the keys and the certificate in a single file.
 
 **!!the line above will require that you answer a couple of questions!!**
 
-Now, make sure that you have UFW/GUFW enabled and installed for the next step.
-
-The command below will allow the connections in the massive range for TCP.
+Now, make sure that you have UFW/GUFW enabled and installed for the next step. The command below will allow the connections in the massive range for TCP.
 ```
 sudo ufw allow 990/tcp
 sudo ufw allow 40000:50000/tcp
