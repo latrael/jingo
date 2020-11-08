@@ -227,12 +227,14 @@ ssl_sslv3=NO
 ```
 Next, comment out the lines that follow:
 
-```#rsa_cert_file=/etc/ssl/private/ssl-cert-snakeoil.pem
+```
+#rsa_cert_file=/etc/ssl/private/ssl-cert-snakeoil.pem
 #rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
 ```
 At the end of the document, add the following lines which defines where the location of the certificate and the key file is located.
 
-```rsa_cert_file=/etc/ssl/private/vsftpd.pem
+```
+rsa_cert_file=/etc/ssl/private/vsftpd.pem
 rsa_private_key_file=/etc/ssl/private/vsftpd.pem
 ```
 The next step involves restricting access for anonymous users, for obvious reasons. The lines in the config file are listed below.
