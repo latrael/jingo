@@ -243,3 +243,22 @@ allow_anon_ssl=NO
 force_local_data_ssl=YES
 force_local_logins_ssl=YES
 ```
+
+The next couple of settings are little tweaks that improve the overall security. 
+
+```require_ssl_reuse=NO```
+
+```ssl_ciphers=HIGH```
+
+```
+pasv_min_port=40000
+pasv_max_port=50000
+```
+
+```
+debug_ssl=YES
+```
+
+Finally, reset the service using systemctl.
+
+```systemctl restart vsftpd```
