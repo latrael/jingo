@@ -204,11 +204,40 @@ This generates the keys and the certificate in a single file.
 
 ```sudo openssl req -x509 -nodes -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem -days 365 -newkey rsa:2048```
 
-**!!the line above will require that you answer a couple of questions!!**
+#### the line above will require that you answer a couple of questions
 
 Now, make sure that you have UFW/GUFW enabled and installed for the next step. The command below will allow the connections in the massive range for TCP.
 ```
 sudo ufw allow 990/tcp
 sudo ufw allow 40000:50000/tcp
 sudo ufw status
+```
+
+Open up the VSFTPD configuration file(for me I use gedit)
+
+```sudo gedit /etc/vsftpd/vsftpd.conf```
+
+Locate the option ```ssl_enable```, and set its value to YES, as well as the other settings below.
+
+```
+ssl_enable=YES
+ssl_tlsv1=YES
+ssl_sslv2=NO
+ssl_sslv3=NO
+```
+Next, comment out the lines that follow:
+
+```#rsa_cert_file=/etc/ssl/private/ssl-cert-snakeoil.pem
+#rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+```
+At the end of the document, add the following lines which defines where the location of the certificate and the key file is located.
+
+```rsa_cert_file=/etc/ssl/private/vsftpd.pem
+rsa_private_key_file=/etc/ssl/private/vsftpd.pem
+```
+The next step involves restricting access for anonymous users, for obvious reasons. The lines in the config file are listed below.
+```
+allow_anon_ssl=NO
+force_local_data_ssl=YES
+force_local_logins_ssl=YES
 ```
