@@ -197,12 +197,14 @@ https://help.ubuntu.com/community/vsftpd
 
 ### Steps to secure using SSL/TLS
 This creates a sub-directory to store the SSL and TLS keys.
+
 ```sudo mkdir /etc/ssl/private```
 
 This generates the keys and the certificate in a single file. 
+
 ```sudo openssl req -x509 -nodes -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem -days 365 -newkey rsa:2048```
 
-**the line above will require that you answer a couple of questions.**
+**!!the line above will require that you answer a couple of questions!!**
 
 Now, make sure that you have UFW/GUFW enabled and installed for the next step.
 
