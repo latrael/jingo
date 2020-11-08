@@ -1,7 +1,5 @@
 ## A linux checklist of some sort is below:
 
-openssl req -new -x509 -days 365 -nodes -out /etc/proftpd/ssl/proftpd.cert.pem -keyout /etc/proftpd/ssl/proftpd.key.pem
-
 ## PAM Modules, Passwords
 Pluggable Authentication Modules(PAM) are used for logon and applications.
 
@@ -189,4 +187,16 @@ To drop null packets, then run: ```iptables -A INPUT -p tcp --tcp-flags ALL NONE
 Drop incoming packets with fragments: ```iptables -A INPUT -f -j DROP```.
 
 ## in depth with SSH
-SSH, if enabled on the machine, needs to be secured. First make sure that ssh is installed. If SSH isn't installed,
+SSH, if enabled on the machine, needs to be secured. First make sure that ssh is installed.
+https://help.ubuntu.com/community/SSH/OpenSSH/Configuring : This link gives an in depth tutorial on setting up and decent security policies. 
+
+## FTP
+Resources:
+https://help.ubuntu.com/community/vsftpd 
+
+# Steps to secure using SSL/TLS
+This creates a sub-directory to store the SSL and TLS keys.
+```sudo mkdir /etc/ssl/private```
+
+This creates
+```sudo openssl req -x509 -nodes -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem -days 365 -newkey rsa:2048```
