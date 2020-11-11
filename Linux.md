@@ -1,5 +1,20 @@
 ## A linux checklist of some sort is below:
 
+Topics below needed to be researched:
+- Group UID
+- User ID
+- Hosts File(/etc/hosts)
+- invalid bash shell(ex. shell installed at /bin/bluray)
+- minimum and maximum password age
+- making sure to delete users using ```userdel [username]```
+- /etc/shadiw file (https://www.cyberciti.biz/faq/understanding-etcshadow-file/)
+- ```sudo apt-get install bum``` Boot-up-manager
+- ```sudo chown root:admin /bin/su sudo``` | ```chmod 04750 /bin/su``` ( limiting access to "su" program)
+- /etc/login.defs ( login?)
+- /etc/lightdm/lightdm.conf ( ```allow-guest=false```)
+- (https://drive.google.com/drive/u/0/folders/18KnypM_-kYaHFF77eN2t14xIszFuwh0Y)
+
+
 ## PAM Modules, Passwords
 Pluggable Authentication Modules(PAM) are used for logon and applications.
 
@@ -305,6 +320,10 @@ AllowAgentForwarding no
 AllowTcpForwarding no
 PermitTunnel no
 ```
+
+Make sure to enable OpenSSH to use PAM
+
+```UsePAM yes```
 
 Now, you can disable the SSH banner that's enabled by default, which shows information on your system, like the operating system version.
 
