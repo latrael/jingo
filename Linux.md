@@ -264,6 +264,7 @@ Finally, reset the service using systemctl.
 ```systemctl restart vsftpd```
 
 ## OPENSSH LOCKDOWN
+(source: https://www.digitalocean.com/community/tutorials/how-to-harden-openssh-on-ubuntu-18-04 | there are more complicated things on there)
 Here we go! First, open the configuration file.
 
 ```sudo gedit /etc/ssh/sshd_config```
