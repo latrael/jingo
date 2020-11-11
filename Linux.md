@@ -7,7 +7,7 @@ Topics below needed to be researched:
 - invalid bash shell(ex. shell installed at /bin/bluray)
 - minimum and maximum password age
 - making sure to delete users using ```userdel [username]```
-- /etc/shadiw file (https://www.cyberciti.biz/faq/understanding-etcshadow-file/)
+- /etc/shadow file (https://www.cyberciti.biz/faq/understanding-etcshadow-file/)
 - ```sudo apt-get install bum``` Boot-up-manager
 - ```sudo chown root:admin /bin/su sudo``` | ```chmod 04750 /bin/su``` ( limiting access to "su" program)
 - /etc/login.defs ( login?)
