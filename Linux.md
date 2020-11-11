@@ -262,3 +262,55 @@ debug_ssl=YES
 Finally, reset the service using systemctl.
 
 ```systemctl restart vsftpd```
+
+## OPENSSH LOCKDOWN
+Here we go! First, open the configuration file.
+
+```sudo gedit /etc/ssh/sshd_config```
+
+Find the line with ```PermitRootLogin``` and set it to the following:
+
+```PermitRootLogin no``` | This prevents someone from logging in directly as root.
+
+Next, we will limit the maximum numer of authentication attemps for a particular login session
+
+```MaxAuthTries 3``` | 3 is considered a standard value for most setups.
+
+Next, we will set a login grace period, which is the amount of time a user has to login and complete authentication(in seconds).
+
+```LoginGraceTime 20``` | This is optional, and you can mess with the value based on your needs.
+
+This next setting depends on the system you've configured. If SSH keys are configured to be used rather then passwords, then use the setting below to disable passowrd authentication, otherwise ignore.
+
+```PasswordAuthentication no```
+
+More related to security with passwords, you can disable the use of empty passwords which is an obvious security risk.
+
+```PermitEmptyPasswords no```
+
+The next settng, X11 forwarding allows for graphical applications over an SSH connection, but its rarely used. If not used on your server, disable it.
+
+```X11 Forwarding no```
+
+OpenSSH allows connecting cilients to pass custom environment variables, but like X11, it's not commonly used, so if that doesn't apply to your server, then it can be disabled.
+
+```PermitUserEnvironment no```
+
+If you won't be using tunneling and forwarding on your server, then you can disable the folllowing misc. options.
+
+
+```
+AllowAgentForwarding no
+AllowTcpForwarding no
+PermitTunnel no
+```
+
+Now, you can disable the SSH banner that's enabled by default, which shows information on your system, like the operating system version.
+
+```DebianBanner no``` | this option will likely not be present in the config file, so you will have to add it manually.
+
+Now you can save and exit the config file. Run ```sudo sshd -t``` to validate your syntax, and if there is not output, then there aren't any syntax errors.
+
+Now that you are satisfied with the config file, you can reload the service.
+
+```sudo service sshd reload```
