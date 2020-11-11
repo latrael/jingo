@@ -13,6 +13,7 @@ Topics below needed to be researched:
 - /etc/login.defs ( login?)
 - /etc/lightdm/lightdm.conf ( ```allow-guest=false```)
 - (https://drive.google.com/drive/u/0/folders/18KnypM_-kYaHFF77eN2t14xIszFuwh0Y)
+- CRON TABS!!!!
 
 
 ## PAM Modules, Passwords
