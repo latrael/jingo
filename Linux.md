@@ -1,14 +1,12 @@
 ## A linux checklist of some sort is below:
 
 Topics below needed to be researched:
-- Group UID
-- User ID
-- Hosts File(/etc/hosts)
+- Group UID (/etc/groups)
+- User ID (/etc/passwd)
+- Hosts File (/etc/hosts)
 - invalid bash shell(ex. shell installed at /bin/bluray)
-- minimum and maximum password age
 - making sure to delete users using ```userdel [username]```
 - /etc/shadow file (https://www.cyberciti.biz/faq/understanding-etcshadow-file/)
-- ```sudo apt-get install bum``` Boot-up-manager
 - ```sudo chown root:admin /bin/su sudo``` | ```chmod 04750 /bin/su``` ( limiting access to "su" program)
 - /etc/login.defs ( login?)
 - /etc/lightdm/lightdm.conf ( ```allow-guest=false```)
@@ -335,3 +333,35 @@ Now you can save and exit the config file. Run ```sudo sshd -t``` to validate yo
 Now that you are satisfied with the config file, you can reload the service.
 
 ```sudo service sshd reload```
+
+# NEW CHANGES(BEWARE)
+## Sudo
+Verify that sudo is installed:
+
+```sudo dpkg -s sudo``` | IF NOT INSTALLED : ```sudo apt-get install sudo```
+
+Make sure that sudo can only run other commands from a psuedo-pty
+
+```sudo  grep -Ei '^\s*Defaults\s+([^#]+,\s*)?use_pty(,\s+\S+\s*)*(\s+#.*)?$' /etc/sudoers /etc/sudoers.d/*
+Defaults use_pty
+```
+
+## Filesystem
+Ensure that the filesystem integrity is regularly checked. Run the following commands in order.
+
+```sudo apt-get install aide aide-common```
+
+```sudo systemctl is-enabled aidecheck.service```
+
+```sudo systemctl status aidecheck.service```
+
+```sudo systemctl is-enabled aidecheck.timer```
+
+```sudo systemctl status aidecheck.timer```
+
+## Secure Boot
+Check to see that root is the only group/user that has access to the bootloader. Make sure it looks like ```Access: (0400/-r--------) Uid: ( 0/ root) Gid: ( 0/ root)```
+
+```sudo stat /boot/grub/grub.cfg``` | If it shows anything other then above, then run the following commands.
+
+```sudo chown root:root /boot/grub/grub.cfg``` | ```sudo chmod og-rwx /boot/grub/grub.cfg```
