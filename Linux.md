@@ -365,3 +365,37 @@ Check to see that root is the only group/user that has access to the bootloader.
 ```sudo stat /boot/grub/grub.cfg``` | If it shows anything other then above, then run the following commands.
 
 ```sudo chown root:root /boot/grub/grub.cfg``` | ```sudo chmod og-rwx /boot/grub/grub.cfg```
+
+## xinetd
+
+Remove xinetd unless otherwise stated by the README
+
+```sudo apt-get purge xinetd```
+
+```sudo apt-get purge openbsd-inetd```
+
+## Services
+### Avahi & CUPS & DHCP & LDAP & DNS & FTP & HTTP & Email & Samba & HTTP Proxy & SNMP
+Usually not used unless server is for specifc purpose. Title corresponds to the order of the commands.
+
+```sudo systemctl --now disable avahi-daemon```
+
+```sudo systemctl --now disable cups```
+
+```sudo systemctl --now disable isc-dhcp-server``` | ```sudo systemctl --now disable isc-dhcp-server6```
+
+```sudo systemctl --now disable slapd```
+
+```sudo systemctl --now disable bind9```
+
+```sudo systemctl --now disable vsftpd``` | Make sure you get points if you think they are warranted, you might have to uninstall.
+
+```sudo systemctl --now disable apache2``` | Make sure you get points if you think they are warranted, you might have to uninstall.
+
+```sudo systemctl --now disable dovecot```
+
+```sudo systemctl --now disable smbd```
+
+```sudo systemctl --now disable squid```
+
+```sudo systemctl --now disable snmpd```
