@@ -375,7 +375,7 @@ Remove xinetd unless otherwise stated by the README
 ```sudo apt-get purge openbsd-inetd```
 
 ## Services
-### Avahi & CUPS & DHCP & LDAP & DNS & FTP & HTTP & Email & Samba & HTTP Proxy & SNMP
+### Avahi & CUPS & DHCP & LDAP & DNS & FTP & HTTP & Email & Samba & HTTP Proxy & SNMP & rsync & NIS & rsh & talk & telnet
 Usually not used unless server is for specifc purpose. Title corresponds to the order of the commands.
 
 ```sudo systemctl --now disable avahi-daemon```
@@ -384,7 +384,7 @@ Usually not used unless server is for specifc purpose. Title corresponds to the 
 
 ```sudo systemctl --now disable isc-dhcp-server``` | ```sudo systemctl --now disable isc-dhcp-server6```
 
-```sudo systemctl --now disable slapd```
+```sudo systemctl --now disable slapd``` | ```sudo apt-get purge ldap-utils```
 
 ```sudo systemctl --now disable bind9```
 
@@ -400,3 +400,13 @@ Usually not used unless server is for specifc purpose. Title corresponds to the 
 ```sudo systemctl --now disable squid```
 
 ```sudo systemctl --now disable snmpd```
+
+```sudo systemctl --now disable rsync```
+
+```sudo systemctl --now disable nis``` | ```sudo apt-get purge nis```
+
+```sudo apt-get purge rsh-client```
+
+```sudo apt-get remove talk```
+
+```sudo apt-get purge telnet```
