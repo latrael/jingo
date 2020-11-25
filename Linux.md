@@ -392,7 +392,8 @@ Usually not used unless server is for specifc purpose. Title corresponds to the 
 
 ```sudo systemctl --now disable apache2``` | Make sure you get points if you think they are warranted, you might have to uninstall.
 
-```sudo systemctl --now disable dovecot```
+```sudo systemctl --now disable dovecot``` | Do the following as well: ```sudo ss -lntu | grep -E ':25\s' | grep -E -v '\s(127.0.0.1|::1):25\s'``` --> Nothing should return from this, and if so, run the things below.
+```sudo  gedit /etc/postfix/main.cf``` --> ```inet_interfaces = loopback-only``` | ```sudo systemctl restart postfix```
 
 ```sudo systemctl --now disable smbd```
 
