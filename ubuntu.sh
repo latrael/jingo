@@ -60,3 +60,4 @@ cups() {
 	cont
 }
 
+startFunctions
