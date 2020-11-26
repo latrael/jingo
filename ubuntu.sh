@@ -60,4 +60,8 @@ cups() {
 	cont
 }
 
+dhcp() {
+	printf "\n Disable dhcp \n"
+}
+
 startFunctions
