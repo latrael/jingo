@@ -6,6 +6,24 @@ if [ "$EUID" -ne 0 ] ;
 fi
 
 startFunctions() {
+	avahi
+	cups
+	dhcp
+	ldap
+	dns
+	ftp
+	http
+	email
+	samba
+	httpProxy
+	snmp
+	rsync
+	nis
+	rsh
+	talk
+	telnet
+	
+	printf "\n Done! \n"
 }
 
 cont(){
@@ -18,4 +36,12 @@ cont(){
 	clear
 }
 
-
+avahi(){
+	printf "\n Disable avahi? \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		exit
+	fi
+	sudo systemctl --now disable avahi-daemon
+}
