@@ -36,7 +36,7 @@ cont(){
 	clear
 }
 
-avahi(){
+avahi() {
 	printf "\n Disable avahi? \n"
 	read disable
 	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
@@ -44,4 +44,19 @@ avahi(){
 		exit
 	fi
 	sudo systemctl --now disable avahi-daemon
+	printf "\n Successful! \n"
+	cont
 }
+
+cups() {
+	printf "\n Disable cups? \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		exit
+	fi
+	sudo systemctl --now disable cups
+	printf "\n Successful! \n"
+	cont
+}
+
