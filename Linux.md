@@ -438,3 +438,6 @@ Usually not used unless server is for specifc purpose. Title corresponds to the 
 
 ```sudo sysctl -w net.ipv4.route.flush=1```
 
+```sudo sysctl -w net.ipv4.conf.all.log_martians=1``` | ```sudo sysctl -w net.ipv4.conf.default.log_martians=1```
+
+```sudo sysctl -w net.ipv4.route.flush=1```
