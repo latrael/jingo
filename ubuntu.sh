@@ -61,7 +61,27 @@ cups() {
 }
 
 dhcp() {
-	printf "\n Disable dhcp \n"
+	printf "\n Disable dhcp? \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		exit
+	fi
+	sudo systemctl --now disable isc-dhcp-server
+	printf "\n Successful! \n"
+	wait 5
+	printf "\n Disable dhcp v6? \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		exit
+	fi
+	sudo systemctl --now disable isc-dhcp-server6
+	printf "\n Successful! \n"
+}
+
+ldap() {
+
 }
 
 startFunctions
