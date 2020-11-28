@@ -41,7 +41,7 @@ avahi() {
 	read disable
 	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
 		printf "\n aborted \n"
-		exit
+		cups
 	fi
 	sudo systemctl --now disable avahi-daemon
 	printf "\n Successful! \n"
@@ -53,7 +53,7 @@ cups() {
 	read disable
 	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
 		printf "\n aborted \n"
-		exit
+		dhcp
 	fi
 	sudo systemctl --now disable cups
 	printf "\n Successful! \n"
