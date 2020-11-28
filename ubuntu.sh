@@ -9,6 +9,7 @@ startFunctions() {
 	avahi
 	cups
 	dhcp
+	dhcpv6
 	ldap
 	dns
 	ftp
@@ -65,19 +66,40 @@ dhcp() {
 	read disable
 	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
 		printf "\n aborted \n"
-		exit
+		dhcpv6
 	fi
 	sudo systemctl --now disable isc-dhcp-server
 	printf "\n Successful! \n"
-	wait 5
+}
+
+dhcpv6() {
 	printf "\n Disable dhcp v6? \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		ldap
+	fi
+	sudo systemctl --now disable isc-dhcp-server6
+	printf "\n Successful! \n"
+}
+
+ldap() {
+	printf "\n Disable ldap? \n"
 	read disable
 	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
 		printf "\n aborted \n"
 		exit
 	fi
-	sudo systemctl --now disable isc-dhcp-server6
-	printf "\n Successful! \n"
+	sudo systemctl --now disable slapd
+	sudo apt-get purge ldap-utils
+	printf "\n Sucessful! \n"
 }
+
+dns() {
+	printf "\n Disable dns? \n"
+	
+}
+
+
 
 startFunctions
