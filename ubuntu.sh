@@ -80,8 +80,4 @@ dhcp() {
 	printf "\n Successful! \n"
 }
 
-ldap() {
-
-}
-
 startFunctions
