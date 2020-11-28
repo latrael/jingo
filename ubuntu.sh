@@ -12,7 +12,7 @@ startFunctions() {
 	dhcpv6
 	ldap
 	dns
-	ftp
+	ftp_d
 	http
 	email
 	samba
@@ -88,7 +88,7 @@ ldap() {
 	read disable
 	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
 		printf "\n aborted \n"
-		exit
+		dns
 	fi
 	sudo systemctl --now disable slapd
 	sudo apt-get purge ldap-utils
@@ -97,9 +97,41 @@ ldap() {
 
 dns() {
 	printf "\n Disable dns? \n"
-	
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		ftp_d
+	fi
+	sudo systemctl --now disable bind9
+	printf "\n Disabled!! \n"
 }
 
+ftp_d() {
+	printf "\n disable ftp? \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		http
+	fi
+	sudo systemctl --now disable vsftpd
+	sudo apt-get purge vsftpd
+	sudo apt-get purge ftp
+}
 
+http() {
+	printf "\n Disable http? \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		http
+	fi
+	sudo systemctl --now disable apache2
+	sudo apt-get purge apache2
+	printf "\n Successful! \n"
+}
+
+email() {
+	
+}
 
 startFunctions
