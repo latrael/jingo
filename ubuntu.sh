@@ -70,6 +70,7 @@ dhcp() {
 	fi
 	sudo systemctl --now disable isc-dhcp-server
 	printf "\n Successful! \n"
+	cont
 }
 
 dhcpv6() {
@@ -81,6 +82,7 @@ dhcpv6() {
 	fi
 	sudo systemctl --now disable isc-dhcp-server6
 	printf "\n Successful! \n"
+	cont
 }
 
 ldap() {
@@ -93,6 +95,7 @@ ldap() {
 	sudo systemctl --now disable slapd
 	sudo apt-get purge ldap-utils
 	printf "\n Sucessful! \n"
+	cont
 }
 
 dns() {
@@ -104,6 +107,7 @@ dns() {
 	fi
 	sudo systemctl --now disable bind9
 	printf "\n Disabled!! \n"
+	cont
 }
 
 ftp_d() {
@@ -116,6 +120,8 @@ ftp_d() {
 	sudo systemctl --now disable vsftpd
 	sudo apt-get purge vsftpd
 	sudo apt-get purge ftp
+	printf "\n Disabled!! \n"
+	cont
 }
 
 http() {
@@ -128,10 +134,117 @@ http() {
 	sudo systemctl --now disable apache2
 	sudo apt-get purge apache2
 	printf "\n Successful! \n"
+	cont
 }
 
 email() {
-	
+	printf "\n Disable email? \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		samba
+	fi
+	sudo systemctl --now disable dovecot
+	printf "\n make sure to follow the rest on the repo! \n"
+	printf "\n Successful! \n"
+	cont
+}
+
+samba() {
+	printf "\n Disable samba(file sharing) \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		httpProxy
+	fi
+	sudo systemctl --now disable smbd
+	printf "\n Successful! \n"
+	cont
+}
+
+httpProxy() {
+	printf "\n disable http proxy? \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		snmp
+	fi
+	sudo systemctl --now disable squid
+	printf "\n Successful! \n"
+	cont
+}
+
+snmp() {
+	printf "\n disable snmp trap? \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		rsync
+	fi
+	sudo systemctl --now disable snmpd
+	printf "\n Successful! \n"
+	cont
+}
+
+rsync() {
+	printf "\n disable rsync? \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		nis
+	fi
+	sudo systemctl --now disable rsync
+	printf "\n successful \n"
+	cont
+}
+
+nis() {
+	printf "\n disable nis? \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		rsh
+	fi
+	sudo systemctl --now disable nis
+	sudo apt-get purge nis
+	printf "\n successful \n"
+	cont
+}
+
+rsh() {
+	printf "\n disable rsh? \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		talk
+	fi
+	sudo apt-get purge rsh-client
+	printf "\n successful \n"
+	cont
+}
+
+talk() {
+	printf "\n disable talk? \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		telnet
+	fi
+	sudo apt-get remove talk
+	printf "\n successful \n"
+	cont
+}
+
+telnet() {
+	printf "\n disable telnet? \n"
+	read disable
+	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
+		printf "\n aborted \n"
+		printf "\n Done! \n"
+		exit
+	fi
+	sudo apt-get purge telnet
+	printf "\n successful \n"
 }
 
 startFunctions
