@@ -129,7 +129,7 @@ http() {
 	read disable
 	if [ "$disable" = "N" ] || [ "$disable" = "n" ]; then
 		printf "\n aborted \n"
-		http
+		email
 	fi
 	sudo systemctl --now disable apache2
 	sudo apt-get purge apache2
