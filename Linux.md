@@ -441,3 +441,20 @@ Usually not used unless server is for specifc purpose. Title corresponds to the 
 ```sudo sysctl -w net.ipv4.conf.all.log_martians=1``` | ```sudo sysctl -w net.ipv4.conf.default.log_martians=1```
 
 ```sudo sysctl -w net.ipv4.route.flush=1```
+
+### Ensure permissions
+Run the follow to ensure that the permssions on ```/etc/hosts.allow```, run ```stat /etc/hosts.allow```. If the access isn't 0644, and the uid isn't 0(root), then run the following.
+
+```sudo chown root:root /etc/hosts.allow``` | ```sudo chmod 644 /etc/hosts.allow```
+
+Same thing with the ```/etc/hosts.deny``` file. ```stat /etc/hosts.deny```
+
+```sudo chown root:root /etc/hosts.deny``` | ```sudo chmod 644 /etc/hosts.deny```
+
+### Firewall and other stuff
+```sudo apt-get install ufw``` | ```sudo apt-get install nftables``` | ```sudo apt-get install iptables```
+
+```sudo ufw default deny incoming``` | ```sudo ufw default deny outgoing``` | ```sudo ufw default deny routed``` 
+## Make sure to whitelist the programs you need to. It is easier to whitelist certain programs then find out what you have to blacklist.
+
+https://www.keepandshare.com/doc30/110740/cis-ubuntu-linux-18-04-lts-benchmark-v2-0-1-pdf-3-0-meg?da=y <-- PAGE 245
